@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Login History Page{% endblock %}
+{% block header %}Logs{% endblock %}
+{% block body %}
+Enter a username to get their logs!
+<br><br>
+<form name="userid" id="userid" action="/login_history" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <input size=32 id="uname" name="uname" style="border-style: groove" TYPE='text' required/><p/>
+    <button id="searchbutton" type="submit">Search</button>
+</form>
+<br><br>
+{% if uname %}
+Showing results for: {{ uname }}
+{% endif %}
+{% if userlog %}
+<ul class="list">
+{% for log in userlog %}
+<li id="login{{ log.id }}">
+    <div id="login{{ log.id }}_time">Login Time: {{ log.login }}</div>
+    {% if log.logout == None %}
+    <div id="logout{{ log.id }}_time">Logout Time: N/A.</div>
+    {% else %}
+    <div id="logout{{ log.id }}_time">Logout Time: {{ log.logout }}</div>
+    {% endif %}
+</li>
+<br>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+

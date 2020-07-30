@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Registration Page{% endblock %}
+{% block header %}User Registration{% endblock %}
+{% block body %}
+{% if id %}
+<div id="success" style = "color: black">{{ id }}</div>
+<br><br>
+{% endif %}
+<form name="register" id="register" action="/register" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    Username: <INPUT SIZE=32 id="uname" name="uname" style="border-style: groove" TYPE='text' required/><p/>
+    Password: <INPUT SIZE=32 id="pword" name="pword" style="border-style: groove" TYPE='password' required/><p/>
+    Cell Phone Number: <INPUT SIZE=32 id="2fa" name="2fa" style="border-style: groove" TYPE='text'/><p/>
+    <button id="registerbutton" type="submit">Register</button>
+</form>
+{% endblock %}
+

@@ -1,0 +1,9 @@
+flask
+pytest
+bleach
+Flask-WTF
+bcrypt
+tox
+tox-travis
+flask-sqlalchemy
+

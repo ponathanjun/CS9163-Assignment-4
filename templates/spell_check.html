@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Spell Checker{% endblock %}
+{% block header %}Spell Checker{% endblock %}
+{% block body %}
+Add text here!
+<br><br>
+<form name="spell_check" id="spell_check" action="/spell_check" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <textarea id="inputtext" name="inputtext" rows="10" cols="50" style="border-style: groove" type='text' required></textarea></p>
+    <button id="spellcheckbutton" type="submit">Spell Check</button>
+</form>
+<br><br>
+{% if textout %}
+<div style = "color: black">Text:</div>
+<br>
+<div id="textout" style = "color: black">{{ textout }}</div>
+<br><br>
+<div style = "color: black">Misspelled words:</div>
+<br>
+{% endif %}
+{% if misspelled %}
+<div id="misspelled" style = "color: black">{{ misspelled }}</div>
+{% endif %}
+{% endblock %}
+

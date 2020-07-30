@@ -1,0 +1,35 @@
+body {
+    background-color: #FF6F61;
+    color: white;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    text-align: center;
+}
+
+.topnav {
+    background-color: #FF6F61;
+    overflow: hidden;
+    border: solid;
+}
+
+.topnav a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #FFDC00;
+    color: white;
+}
+
+ul {
+    list-style-position: inside;
+}

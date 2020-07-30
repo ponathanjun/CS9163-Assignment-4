@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Query Page{% endblock %}
+{% block header %}Query{% endblock %}
+{% block body %}
+{% if userquery %}
+<div id="queryid">Query ID: {{ userquery.id }}</div>
+<br><br>
+<div id="username">User Who Submitted: {{ userquery.user.username }}</div>
+<br><br>
+<div id="querytext">Text Submitted: {{ userquery.textout }}</div>
+<br><br>
+<div id="queryresults">Misspelled Words: {{ userquery.misspelled }}</div>
+<br><br>
+{% endif %}
+{% endblock %}
+

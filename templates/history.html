@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}History Page{% endblock %}
+{% block header %}History{% endblock %}
+{% block body %}
+{% if name == 'admin' %}
+Enter a username to get their history!
+<br><br>
+<form name="userquery" id="userquery" action="/history" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <input size=32 id="uname" name="uname" style="border-style: groove" TYPE='text' required/><p/>
+    <button id="searchbutton" type="submit">Search</button>
+</form>
+<br><br>
+{% endif %}
+Showing results for: {{ searched }}
+<br><br>
+<div id="numqueries">Total number of queries: {{ history|length }}</div>
+<br>
+Queries:
+<br><br>
+{% for query in history %}
+<a style="color: white" href="history/query{{ query.id }}" id="query{{ query.id }}">{{ query.id }}</a>
+<br>
+{% endfor %}
+{% endblock %}
+
