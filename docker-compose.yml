@@ -5,3 +5,19 @@ services:
     ports:
       - "8080:8080"
     image: app:latest
+    secrets:
+      - secret_key
+      - admin_pword
+      - admin_2fa
+    environment:
+      SECRET_KEY: /run/secrets/secret_key
+      ADMIN_PWORD: /run/secrets/admin_pword
+      ADMIN_2FA: /run/secrets/admin_2fa
+
+secrets:
+  secret_key:
+    file: secret_key
+  admin_pword:
+    file: admin_pword
+  admin_2fa:
+    file: admin_2fa
