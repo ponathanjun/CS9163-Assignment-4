@@ -174,11 +174,10 @@ def create_app():
         if 'username' in session:
             name = session['username']
             if name == 'admin':
-                history = ""
                 uname = name
                 if request.method == 'POST':
                     uname = bleach.clean(request.form['uname'])
-                    history = db.session.query(Query).join(User, Query.uid == User.id).filter(User.username == uname).all()
+                history = db.session.query(Query).join(User, Query.uid == User.id).filter(User.username == uname).all()
                 return render_template("history.html", history=history, searched=uname, name=name)
             else:
                 history = db.session.query(Query).join(User, Query.uid == User.id).filter(User.username == name).all()
