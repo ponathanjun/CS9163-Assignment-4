@@ -8,10 +8,18 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 def create_app():
+    # Helper function to access secrets
+    def get_secret(secret_name):
+        try:
+            with open('/run/secrets/{0}'.format(secret_name), 'r') as secret_file:
+                return secret_file.read()
+        except IOError:
+            return None
+    
     # Application setup
     app = Flask(__name__)
     app.config.update(
-        SECRET_KEY = os.urandom(32),
+        SECRET_KEY = get_secret("secret_key"),
         SESSION_COOKIE_HTTPONLY = True,
         SESSION_COOKIE_SAMESITE = 'Strict',
         PERMANENT_SESSION_LIFETIME = 600,
@@ -82,7 +90,7 @@ def create_app():
             db.session.commit()
 
     def create_admin():
-        register_with_user_info("admin", "Administrator@1", "12345678901")
+        register_with_user_info("admin", get_secret("admin_pword"), get_secret("admin_2fa"))
     create_admin()
 
     # Web application pages

@@ -1,4 +1,4 @@
-version: '3'
+version: '3.1'
 services:
   app:
     build: .
@@ -9,10 +9,6 @@ services:
       - secret_key
       - admin_pword
       - admin_2fa
-    environment:
-      SECRET_KEY: /run/secrets/secret_key
-      ADMIN_PWORD: /run/secrets/admin_pword
-      ADMIN_2FA: /run/secrets/admin_2fa
 
 secrets:
   secret_key:
