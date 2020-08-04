@@ -19,7 +19,7 @@ def create_app():
     # Application setup
     app = Flask(__name__)
     app.config.update(
-        SECRET_KEY = get_secret("secret_key"),
+        SECRET_KEY = get_secret("secret_key").strip(),
         SESSION_COOKIE_HTTPONLY = True,
         SESSION_COOKIE_SAMESITE = 'Strict',
         PERMANENT_SESSION_LIFETIME = 600,
@@ -90,7 +90,7 @@ def create_app():
             db.session.commit()
 
     def create_admin():
-        register_with_user_info("admin", get_secret("admin_pword"), get_secret("admin_2fa"))
+        register_with_user_info("admin", get_secret("admin_pword").strip(), get_secret("admin_2fa").strip())
     create_admin()
 
     # Web application pages
