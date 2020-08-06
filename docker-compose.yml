@@ -9,6 +9,16 @@ services:
       - secret_key
       - admin_pword
       - admin_2fa
+    deploy:
+      mode: replicated
+      replicas: 4
+      resources:
+        limits:
+          cpus: '.0.25'
+          memory: 512M
+        reservations:
+          cpus: '.0.25'
+          memory: 256M
 
 secrets:
   secret_key:
